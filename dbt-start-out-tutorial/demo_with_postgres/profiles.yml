@@ -1,0 +1,14 @@
+demo_with_postgres:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: postgres
+      port: 5432
+      dbname: postgres
+      schema: postgres
+      threads: 2
+
+

@@ -1,0 +1,43 @@
+
+rm jaffle_shop.duckdb
+
+
+dbt clean
+
+dbt seed
+
+
+dbt seed --models raw_customers
+
+
+default connect to duckdb is read/write connection
+DuckDB only accept maybe multiple read only connections and 1 write connection
+Current we can access to file.duckdb by DBeaver or duckcli with one connection at time style
+It also meaning that when we connect to file.duckdb DBeaver with duckcli --> we can not use dbt to make chang to that database (dbt need to connect to)
+after dbt run --> refresh the dbeaver connect to access to new database
+
+
+
+
+duckcli jaffle_shop.duckdb
+\dt 
+
+
+dbt run --select customers
+--> fail when stg_customers does not exist
+
+dbt run --select +customers
+--> successful because it will also run upstream models for us (not only stg_customers but also stg_orders and stg_payments)
+----> behaviors are the all staging layers models will be materialized (as view - staging should be views)
+
+
+test other idea --> run stag_customers down stream to observe the results
+dbt clean
+rm jaffle_shop.duckdb
+dbt seed
+dbt run --select stg_customers+
+
+---> fail because of a model upstream customers need 1 more model stg_orders
+Catalog Error: Table with name stg_orders does not exist!
+
+

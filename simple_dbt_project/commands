@@ -1,0 +1,36 @@
+dbt debug --project-dir sde_dbt_tutorial/ --profiles-dir .
+
+-- profiles.yml and dbt_project.yml same folder
+dbt debug --project-dir . --profiles-dir .
+
+
+
+dbt snapshot
+
+pgcli -h localhost -U dbt -p 5432 -d dbt
+# password1234
+
+COPY warehouse.customers(customer_id, zipcode, city, state_code, datetime_created, datetime_updated)
+FROM '/input_data/customer_new.csv' DELIMITER ',' CSV HEADER;
+
+
+dbt snapshot
+
+select customer_id, zipcode, datetime_created, datetime_updated from warehouse.customers where customer_id=82;
++-------------+---------+---------------------+---------------------+
+| customer_id | zipcode | datetime_created    | datetime_updated    |
+|-------------+---------+---------------------+---------------------|
+| 82          | 59655   | 2017-10-18 00:00:00 | 2017-10-18 00:00:00 |
+| 82          | 24120   | 2017-10-18 00:00:00 | 2017-10-18 00:10:00 |
++-------------+---------+---------------------+---------------------+
+
+
+
+select customer_id, zipcode, datetime_created, datetime_updated, dbt_valid_from, dbt_valid_to from snapshots.customers_snapshot where customer_id=82;
+
++-------------+---------+---------------------+---------------------+---------------------+---------------------+
+| customer_id | zipcode | datetime_created    | datetime_updated    | dbt_valid_from      | dbt_valid_to        |
+|-------------+---------+---------------------+---------------------+---------------------+---------------------|
+| 82          | 59655   | 2017-10-18 00:00:00 | 2017-10-18 00:00:00 | 2017-10-18 00:00:00 | 2017-10-18 00:10:00 |
+| 82          | 24120   | 2017-10-18 00:00:00 | 2017-10-18 00:10:00 | 2017-10-18 00:10:00 | <null>              |
++-------------+---------+---------------------+---------------------+---------------------+---------------------+

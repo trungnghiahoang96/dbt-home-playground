@@ -1,0 +1,20 @@
+docker compose down -v
+
+
+dbt init demo_with_progres --profiles-dir .  
+
+dbt run --project-dir /mnt/d/data-engineering-workspace/analytics-engineering/first-touch-dbt/jetbrain-tut/demo_with_postgres/dbt_project.yml --profiles-dir /mnt/d/data-engineering-workspace/analytics-engineering/first-touch-dbt/jetbrain-tut/demo_with_postgres/profiles.yml
+
+dbterd run -t graphviz -ad target
+
+
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      user: postgres
+      password: postgres
+      port: 5432
+      dbname: postgres
+      schema: postgres
+      threads: 2

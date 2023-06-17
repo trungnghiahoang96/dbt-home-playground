@@ -1,0 +1,46 @@
+version: 2
+
+models:
+- name: user
+  description: "Same as customer, but with another name"
+  columns:
+    - name: id
+      description: "The primary key for this table"
+      tests:
+        - unique
+        - not_null
+    - name: email
+      description: email
+      tests:
+        - unique
+        - not_null
+    - name: username
+      description: unique name of customer
+      tests:
+        - not_null
+        - unique
+
+- name: user_post_count
+  description: info about users and posts they wrote
+  columns:
+    - name: user_id
+      type: bigint
+      tests:
+        - unique
+        - not_null
+        - relationships:
+            to: ref('user')
+            field: id
+    - name: username
+      type: text
+      tests:
+        - unique
+        - not_null
+        - relationships:
+            to: ref('user')
+            field: username
+    - name: post_number
+      description: number of posts user wrote
+      type: int
+      tests:
+        - not_null

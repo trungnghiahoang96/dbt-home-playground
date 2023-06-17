@@ -1,0 +1,115 @@
+digraph g {
+  fontname="Helvetica,Arial,sans-serif"
+  node [fontname="Helvetica,Arial,sans-serif"]
+  edge [fontname="Helvetica,Arial,sans-serif"]
+  graph [fontsize=30 labelloc="t" label="" splines=true overlap=false rankdir="LR"];
+  ratio=auto;
+  "model.sde_dbt_tutorial.dim_customers" [
+    style = "filled, bold"
+    penwidth = 1
+    fillcolor = "white"
+    fontname = "Courier New"
+    shape = "Mrecord"
+    label =<
+      <table border="0" cellborder="0" cellpadding="3" bgcolor="white">
+         <tr><td bgcolor="black" align="center" colspan="2"><font color="white">model.sde_dbt_tutorial.dim_customers</font></td></tr>
+         <tr><td align="left">(integer) customer_id</td></tr>
+         <tr><td align="left">(character varying(5)) zipcode</td></tr>
+         <tr><td align="left">(character varying(100)) city</td></tr>
+         <tr><td align="left">(character varying(2)) state_code</td></tr>
+         <tr><td align="left">(character varying(30)) state_name</td></tr>
+         <tr><td align="left">(timestamp without time zone) datetime_created</td></tr>
+         <tr><td align="left">(timestamp without time zone) datetime_updated</td></tr>
+         <tr><td align="left">(timestamp without time zone) valid_from</td></tr>
+         <tr><td align="left">(timestamp without time zone) valid_to</td></tr>
+      </table>> ];
+  "model.sde_dbt_tutorial.fct_orders" [
+    style = "filled, bold"
+    penwidth = 1
+    fillcolor = "white"
+    fontname = "Courier New"
+    shape = "Mrecord"
+    label =<
+      <table border="0" cellborder="0" cellpadding="3" bgcolor="white">
+         <tr><td bgcolor="black" align="center" colspan="2"><font color="white">model.sde_dbt_tutorial.fct_orders</font></td></tr>
+         <tr><td align="left">(character varying(32)) order_id</td></tr>
+         <tr><td align="left">(integer) customer_id</td></tr>
+         <tr><td align="left">(character varying(15)) order_status</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_purchase_timestamp</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_approved_at</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_delivered_carrier_date</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_delivered_customer_date</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_estimated_delivery_date</td></tr>
+      </table>> ];
+  "model.sde_dbt_tutorial.customer_orders" [
+    style = "filled, bold"
+    penwidth = 1
+    fillcolor = "white"
+    fontname = "Courier New"
+    shape = "Mrecord"
+    label =<
+      <table border="0" cellborder="0" cellpadding="3" bgcolor="white">
+         <tr><td bgcolor="black" align="center" colspan="2"><font color="white">model.sde_dbt_tutorial.customer_orders</font></td></tr>
+         <tr><td align="left">(character varying(32)) order_id</td></tr>
+         <tr><td align="left">(integer) customer_id</td></tr>
+         <tr><td align="left">(character varying(15)) order_status</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_purchase_timestamp</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_approved_at</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_delivered_carrier_date</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_delivered_customer_date</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_estimated_delivery_date</td></tr>
+         <tr><td align="left">(character varying(5)) customer_zipcode</td></tr>
+         <tr><td align="left">(character varying(100)) customer_city</td></tr>
+         <tr><td align="left">(character varying(2)) customer_state_code</td></tr>
+         <tr><td align="left">(character varying(30)) customer_state_name</td></tr>
+      </table>> ];
+  "model.sde_dbt_tutorial.stg_eltool__customers" [
+    style = "filled, bold"
+    penwidth = 1
+    fillcolor = "white"
+    fontname = "Courier New"
+    shape = "Mrecord"
+    label =<
+      <table border="0" cellborder="0" cellpadding="3" bgcolor="white">
+         <tr><td bgcolor="black" align="center" colspan="2"><font color="white">model.sde_dbt_tutorial.stg_eltool__customers</font></td></tr>
+         <tr><td align="left">(integer) customer_id</td></tr>
+         <tr><td align="left">(character varying(5)) zipcode</td></tr>
+         <tr><td align="left">(character varying(100)) city</td></tr>
+         <tr><td align="left">(character varying(2)) state_code</td></tr>
+         <tr><td align="left">(timestamp without time zone) datetime_created</td></tr>
+         <tr><td align="left">(timestamp without time zone) datetime_updated</td></tr>
+         <tr><td align="left">(character varying(100)) dbt_valid_from</td></tr>
+         <tr><td align="left">(text) dbt_valid_to</td></tr>
+      </table>> ];
+  "model.sde_dbt_tutorial.stg_eltool__orders" [
+    style = "filled, bold"
+    penwidth = 1
+    fillcolor = "white"
+    fontname = "Courier New"
+    shape = "Mrecord"
+    label =<
+      <table border="0" cellborder="0" cellpadding="3" bgcolor="white">
+         <tr><td bgcolor="black" align="center" colspan="2"><font color="white">model.sde_dbt_tutorial.stg_eltool__orders</font></td></tr>
+         <tr><td align="left">(character varying(32)) order_id</td></tr>
+         <tr><td align="left">(integer) customer_id</td></tr>
+         <tr><td align="left">(character varying(15)) order_status</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_purchase_timestamp</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_approved_at</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_delivered_carrier_date</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_delivered_customer_date</td></tr>
+         <tr><td align="left">(timestamp without time zone) order_estimated_delivery_date</td></tr>
+      </table>> ];
+  "model.sde_dbt_tutorial.stg_eltool__state" [
+    style = "filled, bold"
+    penwidth = 1
+    fillcolor = "white"
+    fontname = "Courier New"
+    shape = "Mrecord"
+    label =<
+      <table border="0" cellborder="0" cellpadding="3" bgcolor="white">
+         <tr><td bgcolor="black" align="center" colspan="2"><font color="white">model.sde_dbt_tutorial.stg_eltool__state</font></td></tr>
+         <tr><td align="left">(integer) state_id</td></tr>
+         <tr><td align="left">(character varying(2)) state_code</td></tr>
+         <tr><td align="left">(character varying(30)) state_name</td></tr>
+      </table>> ];
+}
