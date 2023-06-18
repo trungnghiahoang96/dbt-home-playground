@@ -29,7 +29,11 @@ models:
       core:
         materialized: table
         +docs:
-          lsnode_color: 'gold'
+          node_color: 'gold'
+    sources:
+      materialized: table
+      +docs:
+        node_color: 'blue'
     staging:
       materialized: view
       +docs:

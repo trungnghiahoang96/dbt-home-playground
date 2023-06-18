@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: landing
+    database: jaffle_shop
+    schema: main
+    tables:
+      - name: src_customers
+      - name: src_orders
+      - name: src_payments
